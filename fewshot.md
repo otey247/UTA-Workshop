@@ -2,11 +2,11 @@
 
 While large-language models demonstrate remarkable zero-shot capabilities, they still fall short on more complex tasks when using the zero-shot setting. Few-shot prompting can be used as a technique to enable in-context learning where we provide demonstrations in the prompt to steer the model to better performance. The demonstrations serve as conditioning for subsequent examples where we would like the model to generate a response.
 
-According to Touvron et al. 2023 (opens in a new tab) few shot properties first appeared when models were scaled to a sufficient size (Kaplan et al., 2020) (opens in a new tab).
+According to [Touvron et al. 2023](https://arxiv.org/pdf/2302.13971.pdf) few shot properties first appeared when models were scaled to a sufficient size [(Kaplan et al., 2020)](https://arxiv.org/abs/2001.08361).
 
-[Touvron et al. 2023](https://arxiv.org/pdf/2302.13971.pdf)[(Kaplan et al., 2020)](https://arxiv.org/abs/2001.08361)Let's demonstrate few-shot prompting via an example that was presented in Brown et al. 2020 (opens in a new tab). In the example, the task is to correctly use a new word in a sentence.
+Let's demonstrate few-shot prompting via an example that was presented in [Brown et al. 2020](https://arxiv.org/abs/2005.14165). In the example, the task is to correctly use a new word in a sentence.
 
-[Brown et al. 2020](https://arxiv.org/abs/2005.14165)Prompt:
+Prompt:
 
 ```
 A "whatpu" is a small, furry animal native to Tanzania. An example of a sentence that uses the word whatpu is:
@@ -23,9 +23,9 @@ When we won the game, we all started to farduddle in celebration.
 
 We can observe that the model has somehow learned how to perform the task by providing it with just one example (i.e., 1-shot). For more difficult tasks, we can experiment with increasing the demonstrations (e.g., 3-shot, 5-shot, 10-shot, etc.).
 
-Following the findings from Min et al. (2022) (opens in a new tab), here are a few more tips about demonstrations/exemplars when doing few-shot:
+Following the findings from [Min et al. (2022)](https://arxiv.org/abs/2202.12837), here are a few more tips about demonstrations/exemplars when doing few-shot:
 
-[Min et al. (2022)](https://arxiv.org/abs/2202.12837)Let's try out a few examples. Let's first try an example with random labels (meaning the labels Negative and Positive are randomly assigned to the inputs):
+Let's try out a few examples. Let's first try an example with random labels (meaning the labels Negative and Positive are randomly assigned to the inputs):
 
 Prompt:
 
@@ -62,7 +62,9 @@ Negative
 
 There is no consistency in the format above but the model still predicted the correct label. We have to conduct a more thorough analysis to confirm if this holds for different and more complex tasks, including different variations of prompts.
 
-[Link](#limitations-of-few-shot-prompting)Standard few-shot prompting works well for many tasks but is still not a perfect technique, especially when dealing with more complex reasoning tasks. Let's demonstrate why this is the case. Do you recall the previous example where we provided the following task:
+# Limitations of Few-shot Prompting
+
+Standard few-shot prompting works well for many tasks but is still not a perfect technique, especially when dealing with more complex reasoning tasks. Let's demonstrate why this is the case. Do you recall the previous example where we provided the following task:
 
 ```
 The odd numbers in this group add up to an even number: 15, 32, 5, 13, 82, 7, 1. 
@@ -105,6 +107,6 @@ Output:
 The answer is True.
 ```
 
-That didn't work. It seems like few-shot prompting is not enough to get reliable responses for this type of reasoning problem. The example above provides basic information on the task. If you take a closer look, the type of task we have introduced involves a few more reasoning steps. In other words, it might help if we break the problem down into steps and demonstrate that to the model. More recently, chain-of-thought (CoT) prompting (opens in a new tab) has been popularized to address more complex arithmetic, commonsense, and symbolic reasoning tasks.
+That didn't work. It seems like few-shot prompting is not enough to get reliable responses for this type of reasoning problem. The example above provides basic information on the task. If you take a closer look, the type of task we have introduced involves a few more reasoning steps. In other words, it might help if we break the problem down into steps and demonstrate that to the model. More recently, [chain-of-thought (CoT) prompting](https://arxiv.org/abs/2201.11903) has been popularized to address more complex arithmetic, commonsense, and symbolic reasoning tasks.
 
-[chain-of-thought (CoT) prompting](https://arxiv.org/abs/2201.11903)Overall, it seems that providing examples is useful for solving some tasks. When zero-shot prompting and few-shot prompting are not sufficient, it might mean that whatever was learned by the model isn't enough to do well at the task. From here it is recommended to start thinking about fine-tuning your models or experimenting with more advanced prompting techniques. Up next we talk about one of the popular prompting techniques called chain-of-thought prompting which has gained a lot of popularity.
+Overall, it seems that providing examples is useful for solving some tasks. When zero-shot prompting and few-shot prompting are not sufficient, it might mean that whatever was learned by the model isn't enough to do well at the task. From here it is recommended to start thinking about fine-tuning your models or experimenting with more advanced prompting techniques. Up next we talk about one of the popular prompting techniques called chain-of-thought prompting which has gained a lot of popularity.some tasks. When zero-shot prompting and few-shot prompting are not sufficient, it might mean that whatever was learned by the model isn't enough to do well at the task. From here it is recommended to start thinking about fine-tuning your models or experimenting with more advanced prompting techniques. Up next we talk about one of the popular prompting techniques called chain-of-thought prompting which has gained a lot of popularity.
