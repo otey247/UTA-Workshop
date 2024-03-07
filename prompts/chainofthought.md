@@ -41,6 +41,16 @@ A:
 Adding all the odd numbers (15, 5, 13, 7, 1) gives 41. The answer is False.
 ```
 
-Keep in mind that the authors claim that this is an emergent ability that arises with sufficiently large language models. 
+Here is an example for you to try!
 
+*Prompt:*
+```
+Prompt:
+
+I went to the market and bought 10 apples. I gave 2 apples to the neighbor and
+2 to the repairman. I then went and bought 5 more apples and ate 1. How many
+apples was I left with?
+
+Let's think step by step.
+```
 ---
