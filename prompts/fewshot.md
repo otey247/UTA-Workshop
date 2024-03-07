@@ -27,6 +27,15 @@ Following the findings from [Min et al. (2022)](https://arxiv.org/abs/2202.12837
 
 Let's try out a few examples. Let's first try an example with random labels (meaning the labels Negative and Positive are randomly assigned to the inputs):
 
+```
+Prompt:
+
+Great product, 10/10: Positive
+Didn't work very well: Negative
+Super helpful, worth it: Positive
+It doesn't work!:
+```
+
 Prompt:
 
 ```
@@ -44,23 +53,32 @@ Negative
 
 We still get the correct answer, even though the labels have been randomized. Note that we also kept the format, which helps too. In fact, with further experimentation, it seems the newer GPT models we are experimenting with are becoming more robust to even random formats. Example:
 
+
+Here is another example for you to try.
+
 Prompt:
 
 ```
-Positive This is awesome! 
-This is bad! Negative
-Wow that movie was rad!
-Positive
-What a horrible show! --
-```
+Prompt: Predict up to 5 emojis as a response to a text chat message. The output
+should only include emojis.
 
-Output:
+input: The new visual design is blowing my mind 🤯
+output: ➕,💘, ❤‍🔥
 
-```
-Negative
-```
+input: Well that looks great regardless
+output: ❤️,🪄
 
-There is no consistency in the format above but the model still predicted the correct label. We have to conduct a more thorough analysis to confirm if this holds for different and more complex tasks, including different variations of prompts.
+input: Unfortunately this won't work
+output: 💔,😔
+
+input: sounds good, I'll look into that
+output: 🙏,👍
+
+input: 10hr cut of jeff goldblum laughing URL
+output: 😂,💀,⚰️
+
+input: Woo! Launch time!
+```
 
 # Limitations of Few-shot Prompting
 
@@ -109,29 +127,4 @@ The answer is True.
 
 That didn't work. It seems like few-shot prompting is not enough to get reliable responses for this type of reasoning problem. The example above provides basic information on the task. If you take a closer look, the type of task we have introduced involves a few more reasoning steps. In other words, it might help if we break the problem down into steps and demonstrate that to the model. More recently, [chain-of-thought (CoT) prompting](https://arxiv.org/abs/2201.11903) has been popularized to address more complex arithmetic, commonsense, and symbolic reasoning tasks.
 
-Here is an example for you to try
-
-Prompt:
-
-```
-Prompt: Predict up to 5 emojis as a response to a text chat message. The output
-should only include emojis.
-
-input: The new visual design is blowing my mind 🤯
-output: ➕,💘, ❤‍🔥
-
-input: Well that looks great regardless
-output: ❤️,🪄
-
-input: Unfortunately this won't work
-output: 💔,😔
-
-input: sounds good, I'll look into that
-output: 🙏,👍
-
-input: 10hr cut of jeff goldblum laughing URL
-output: 😂,💀,⚰️
-
-input: Woo! Launch time!
-```
 Overall, it seems that providing examples is useful for solving some tasks. When zero-shot prompting and few-shot prompting are not sufficient, it might mean that whatever was learned by the model isn't enough to do well at the task. From here it is recommended to start thinking about fine-tuning your models or experimenting with more advanced prompting techniques. Up next we talk about one of the popular prompting techniques called chain-of-thought prompting which has gained a lot of popularity.some tasks. When zero-shot prompting and few-shot prompting are not sufficient, it might mean that whatever was learned by the model isn't enough to do well at the task. From here it is recommended to start thinking about fine-tuning your models or experimenting with more advanced prompting techniques. Up next we talk about one of the popular prompting techniques called chain-of-thought prompting which has gained a lot of popularity.
